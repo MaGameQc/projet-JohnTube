@@ -16,7 +16,7 @@ body, html{
     "recommendedVideos"
     ;
 
-    grid-template-rows: 8vh 0fr 16vh 12vh auto auto;
+    grid-template-rows: 8vh 0fr 0fr 12vh auto auto;
     grid-gap: 3px;
 }
 
@@ -172,8 +172,15 @@ align-items: center;
     width: auto;
 }
 
-#pauseIcon{
+#playIcon{
+    cursor: pointer;
     display: none;
+
+}
+
+#pauseIcon{
+    cursor: pointer;
+
 }
 
 #timeAndTimeLineSection{
@@ -188,6 +195,7 @@ align-items: center;
     height: 1vh;
     background-color: white;
     position: relative;
+    cursor : pointer;
 }
 
 #timeLineState{
@@ -201,4 +209,24 @@ align-items: center;
     padding: 0;
     margin: 0;
     color: white;
+}
+
+/* *************************************************************************** video description ****************************************************************************** */
+#videoDescription{
+    height: 100%;
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border-bottom: solid 2px #868686;
+}
+
+#videoTitle{
+    font-size: 3.8vh;
+}
+
+#videoViews{
+    font-size: 2vh;
+    color: #868686;
 }
