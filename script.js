@@ -90,63 +90,41 @@ Video.timeProgress();
 };
 
 
+let ProfilePictureSetter ={
+    profileContainerHeight : document.getElementById("uploader").clientHeight,
+    profileContainer : document.getElementById("uploader"),
+    profilePicture : document.getElementById("uploaderProfilePicture"),
 
-// Video.setTimeLineWidthOnClick();
+    set : function(){
+        this.profilePicture.style.display = "block";
 
+        this.profilePicture.style.height = this.profileContainerHeight + "px";
+        this.profilePicture.style.width = this.profileContainerHeight + "px";
+    },
 
+    resize : function(){
+        window.onresize = function(){
+            ProfilePictureSetter.set();
+            console.log("resized");
+        }
+    }
+}
 
+ProfilePictureSetter.set();
+ProfilePictureSetter.resize();
 
-
-/********************************************************************************************** */
-
-// const video = document.getElementById("video");
-// const videoDuration = video.duration;
-
-
-
-
-// document.getElementById("playIcon").addEventListener("click", function(){
-//     playVideo();
-// });
-// document.getElementById("pauseIcon").addEventListener("click", function(){
-//     pauseVideo();
-// });
-
-// function playVideo(){
-//     video.play();
-//     document.getElementById("playIcon").style.display = "none";
-//     document.getElementById("pauseIcon").style.display = "block";
-// }
-
-// function pauseVideo(){
-//     video.pause();
-//     document.getElementById("pauseIcon").style.display = "none";
-//     document.getElementById("playIcon").style.display = "block";
-// }
+// let profileContainerHeight = document.getElementById("uploader").clientHeight;
+// console.log(profileContainerHeight + " container height");
 
 
 
-// document.getElementById("timeLine").addEventListener("click", function(event){
-//     var totalViewPortWidth = document.getElementById("body").getBoundingClientRect().width;
-//     var timeLinePositionX = document.getElementById("timeLine").getBoundingClientRect().x;
-//     var timeLineWidth = document.getElementById("timeLine").getBoundingClientRect().width;
+// let profilePicture = document.getElementById("uploaderProfilePicture");
 
-//     var mousePositionX = event.pageX;
- 
-//     var calc = (mousePositionX - timeLinePositionX)  / timeLineWidth * 100;
+// profilePicture.style.display = "block";
 
-//     document.getElementById("timeLineState").style.width = calc + "%";
-//     let toSeconds = calc * videoDuration / 100 ;
-//     video.currentTime = toSeconds;
-// });
+// profilePicture.style.height = profileContainerHeight + "px";
+// profilePicture.style.width = profileContainerHeight + "px";
 
+// console.log(profilePicture.style.height);
 
-// video.ontimeupdate = function(){
-//     // console.log(videoDuration);
-
-//     let calculateTimeLineWidth = (video.currentTime / videoDuration) * 100;
-//     document.getElementById("timeLineState").style.width = calculateTimeLineWidth + "%";
-
-
-// };
 

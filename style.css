@@ -16,8 +16,8 @@ body, html{
     "recommendedVideos"
     ;
 
-    grid-template-rows: 8vh 0fr 0fr 12vh auto auto;
-    grid-gap: 3px;
+    grid-template-rows: 8vh 0fr 0fr 0fr 0fr auto;
+    /* grid-gap: 3px; */
 }
 
 #video{
@@ -215,11 +215,10 @@ align-items: center;
 #videoDescription{
     height: 100%;
     width: 100%;
-    padding: 0 5%;
+    padding: 0 2%;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    border-bottom: solid 2px #868686;
 }
 
 #videoTitle{
@@ -230,3 +229,99 @@ align-items: center;
     font-size: 2vh;
     color: #868686;
 }
+
+/* *************************************************************************** uploader informations ****************************************************************************** */
+
+#uploaderContainer{
+    display : grid;
+    grid-template-columns: 20% 80%;
+    padding: 2% 0;
+    background-color: white;
+    border-bottom: solid 2px #1AD1F9;
+    border-top: solid 2px #1AD1F9;
+
+}
+
+#uploaderProfilePictureContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+}
+
+#uploaderProfilePicture{
+    
+    border-radius: 50%;
+    display: none;
+    
+}
+
+#uploader{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+#uploader, p{
+    padding: 0;
+    margin: 0;
+}
+
+#uploaderName{
+    color: black;
+    font-size: 2.5vh;
+}
+
+#uploaderSubCount{
+    font-size: 1.8vh;
+    color: #868686;
+}
+
+
+/* *************************************************************************** recommended videos ****************************************************************************** */
+
+.recommendedVideo{
+    display: grid;
+
+    grid-template-areas: 
+    "thumbnail"
+    "TitleAndViews"
+    ;
+
+    grid-template-columns: 40vw 60vw;
+    grid-template-rows: 12.5%;
+
+    background-color: white;
+    /* border-bottom: solid 2px #1AD1F9; */
+    cursor: pointer;
+}
+
+.thumbnailContainer{
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail{
+height: auto;
+width: 100%;
+padding: 5%;
+}
+
+.recommendedTitleAndViews{
+    background-color: white;
+    margin: 5%;
+}
+
+.recommendeTitle{
+    color: black;
+    font-size: 2.5vh;
+}
+
+.recommendedViews, .recommendedUploader{
+    font-size: 1.8vh;
+    color: #868686;
+}
+
