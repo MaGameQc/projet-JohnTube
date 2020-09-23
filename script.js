@@ -128,3 +128,45 @@ ProfilePictureSetter.resize();
 // console.log(profilePicture.style.height);
 
 
+var NavBar = {
+    hamburger : document.getElementById("itemHamburgerContainer"), 
+    menu : document.getElementById("navBarMenuContainer"),
+
+    listenHamburgerIsClicked : function(){
+        this.hamburger.addEventListener("click", function(){
+            if(NavBar.menu.clientHeight == 0){
+                NavBar.showMenu()
+            }else{
+                NavBar.hideMenu()
+            }
+        });
+    },
+
+    showMenu : function(){
+        this.menu.style.display = "grid"
+        this.menu.animate(
+            [
+                { height : "0vh", opacity: "0"},
+                {height : "90vh", opacity: "1"},
+            ], {
+                duration: 700,
+                fill: "forwards"
+            });
+
+    },
+
+    hideMenu : function(){
+        this.menu.animate(
+            [
+                {height : "90vh", opacity: "1"},
+                {height : "0vh", opacity: "0", display: "none"}
+                
+            ], {
+                duration: 700,
+                fill: "forwards"
+            });
+    },
+};
+
+NavBar.listenHamburgerIsClicked();
+

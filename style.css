@@ -16,7 +16,7 @@ body, html{
     "recommendedVideos"
     ;
 
-    grid-template-rows: 8vh 0fr 0fr 0fr 0fr auto;
+    grid-template-rows:  10vh auto auto auto auto auto;
     /* grid-gap: 3px; */
 }
 
@@ -70,24 +70,28 @@ body, html{
     grid-template-areas: 
     "logo empty hamburger"
     ;
-    grid-template-columns: 2fr 3fr 1fr;
+    grid-template-columns: 35vw auto 15vw;
+
 }
 
 #itemLogoContainer{
     grid-area: logo;
     display: flex;
-justify-content: center;
+justify-content: start;
 align-items: center;
+position: relative;
+
 }
 #logo{
     filter: invert(100%);
+    height: 60%;
 }
 
 #logoTitle{
     color: white;
     padding: 0;
     margin:0;
-    font-size: 1.5vh;
+    font-size: 2vh;
 }
 
 #empty{
@@ -102,7 +106,7 @@ align-items: center;
 }
 
 #hamburgerIconContainer{
-    width: 50%;
+    width: 70%;
     height: 50%;
     display:flex;
     justify-content: space-evenly;   
@@ -113,8 +117,22 @@ align-items: center;
 .line{
     background-color: white;
     width: 100%;
-    height: 12%;
+    height: 14%;
     align-self: center;
+}
+
+/* **********************************************************************************NAV BAR List***************************************************************** */
+
+#navBarMenuContainer{
+    display: none;
+    position: absolute;
+    background-color: paleturquoise;
+    z-index: 1;
+    height: 90vh;
+    width: 100vw;
+
+    grid-template-rows: repeat(3, 10%) 70%;
+    grid-gap : 3px;
 }
 
 /* *************************************************************************** VIDEO SECTION ****************************************************************************** */
@@ -246,14 +264,13 @@ align-items: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    object-fit: contain;
 }
 
 #uploaderProfilePicture{
     
     border-radius: 50%;
     display: none;
-    
+    object-fit: cover;
 }
 
 #uploader{
@@ -295,6 +312,7 @@ align-items: center;
     background-color: white;
     /* border-bottom: solid 2px #1AD1F9; */
     cursor: pointer;
+    /* box-shadow: 0 0px 6px grey; */
 }
 
 .thumbnailContainer{
@@ -325,3 +343,77 @@ padding: 5%;
     color: #868686;
 }
 
+
+/* *************************************************************************** cell en landscape mode ****************************************************************************** */
+
+
+
+@media only screen and (min-width : 600px) {
+    #mainContainer{    
+        grid-template-rows:  15vh 0fr 0fr 0fr auto;
+    }
+
+    #navBar{
+        grid-template-columns: 30vw auto 8vw;
+    }
+
+    #logoTitle{
+        font-size: 3vh;
+    }
+
+
+
+
+
+    
+    #videoTitle{
+        font-size: 10vh;
+    }
+    
+    #videoViews{
+        font-size: 4.8vh;
+        color: #868686;
+    }
+
+
+
+    
+
+    #uploaderContainer{
+        grid-template-columns: 10% 80%;
+    }
+
+
+    #uploaderProfilePictureContainer{
+        padding: 0;
+    }
+
+
+#uploaderName{
+    color: black;
+    font-size: 6vh;
+}
+
+#uploaderSubCount{
+    font-size: 3.5vh;
+    color: #868686;
+}
+
+
+
+
+
+
+
+.recommendedTitle{
+    color: black;
+    font-size: 6vh;
+}
+
+.recommendedViews, .recommendedUploader{
+    font-size: 3.5vh;
+    color: #868686;
+}
+
+
+    }
