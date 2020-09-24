@@ -155,6 +155,9 @@ ProfilePictureSetter.resize();
 var NavBar = {
     hamburger : document.getElementById("itemHamburgerContainer"), 
     menu : document.getElementById("navBarMenuContainer"),
+    line1 : document.getElementById("line1"),
+    line2 : document.getElementById("line1"),
+    line3 : document.getElementById("line1"),
 
 
 
@@ -163,8 +166,10 @@ var NavBar = {
         this.hamburger.addEventListener("click", function(){
             if(NavBar.menu.clientHeight == 0){
                 NavBar.showMenu();
+                NavBar.turnHamburgerToX();
             }else{
-                NavBar.hideMenu()
+                NavBar.turnHamburgerToNormal();
+                NavBar.hideMenu();
             }
         });
     },
@@ -194,8 +199,81 @@ var NavBar = {
             });
     },
 
+    turnHamburgerToX : () =>{
+        this.line1.classList.add("line1");
+        this.line2.classList.add("line2");
+        this.line3.classList.add("line3");
+    },
+
+    turnHamburgerToNormal : () =>{
+        this.line1.classList.remove("line1");
+        this.line2.classList.remove("line2");
+        this.line3.classList.remove("line3");
+    }
+
+
 
 };
 
 NavBar.listenHamburgerIsClicked();
 
+
+
+
+
+var RecommendedVid = {
+image: ["image/thumbnail/thumbnail1.jpg", "image/thumbnail/thumbnail6.jpg", "image/thumbnail/thumbnail5.jpg"],
+title: ["Ca vous empêche de jouer", "Ca vous empêche de jouer", "Ca vous empêche de jouer"],
+uploader: ["Tommy Audet"],
+views: ["1 Vues"],
+
+append: function (){
+
+    for(i = 0; i < this.image.length; i++){
+        let recommendedVideosContainer = document.getElementById("recommendedVideosContainer");
+        let recommendedVideo = makeElements("article", "recommendedVideo");
+        let thumbnailContainer = makeElements("div", "thumbnailContainer");
+        let thumbnail = makeElements("img", "thumbnail", RecommendedVid.image[i]);
+
+        let recommendedTitleAndViews = makeElements("div", "recommendedTitleAndViews");
+        let recommendedTitle = makeTextElements("p", "recommendedTitle", RecommendedVid.title[i]);
+
+
+        
+        recommendedVideosContainer.appendChild(recommendedVideo);
+        recommendedVideo.appendChild(thumbnailContainer);
+        thumbnailContainer.appendChild(thumbnail);
+
+
+        recommendedVideo.appendChild(recommendedTitleAndViews);
+        recommendedTitleAndViews.appendChild(recommendedTitle);
+
+    }
+
+    function makeElements(type, classAttribute, source){
+        
+        let element = document.createElement(type);
+        element.setAttribute("class", classAttribute);
+        console.log(element);
+            if(type == "img"){
+                element.src = source;
+            }
+
+            return element;
+    }
+
+    function makeTextElements(type, classAttribute, textContent){
+        let text = document.createTextNode(textContent);
+        let element = document.createElement(type);
+        element.setAttribute("class", classAttribute);
+        console.log(element);
+           element.appendChild(text);
+
+            return element;
+    }
+
+},
+
+};
+
+RecommendedVid.append();

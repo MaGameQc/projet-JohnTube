@@ -1,6 +1,7 @@
 
 body, html{
     height: 100%;
+    overflow-x: hidden;
 }
 #mainContainer{
     display: grid;
@@ -70,7 +71,7 @@ body, html{
     grid-template-areas: 
     "logo empty hamburger"
     ;
-    grid-template-columns: 35vw auto 15vw;
+    grid-template-columns: 40vw auto 15vw;
 
 }
 
@@ -84,14 +85,15 @@ position: relative;
 }
 #logo{
     filter: invert(100%);
-    height: 60%;
+    height: 70%;
 }
 
 #logoTitle{
     color: white;
     padding: 0;
     margin:0;
-    font-size: 2vh;
+    font-size: 1.4vh;
+    font-family: 'Rock Salt', cursive;
 }
 
 #empty{
@@ -106,10 +108,10 @@ position: relative;
 }
 
 #hamburgerIconContainer{
-    width: 70%;
-    height: 50%;
+    width: 30px;
+    height: 30px;
     display:flex;
-    justify-content: space-evenly;   
+    justify-content: space-between;   
     flex-direction: column; 
     cursor: pointer;
 }
@@ -117,8 +119,37 @@ position: relative;
 .line{
     background-color: white;
     width: 100%;
-    height: 14%;
+    height: 4px;
     align-self: center;
+}
+
+@keyframes line1TurnToX{
+    from{transform: translateY(0) rotate(0);}
+    to{transform: translateY(13px) rotate(45deg);}
+}
+
+@keyframes line2TurnToX{
+    from{left:0; opacity: 1;}
+    to{left:-100px; opacity: 0;}
+}
+
+@keyframes line3TurnToX{
+    from{transform: translateY(0) rotate(0);}
+    to{transform: translateY(-13px) rotate(-45deg);}
+}
+
+.line1{
+animation: line1TurnToX .5s forwards;
+    transform: translateY(16.5px) rotate(45deg);
+
+}
+.line2{
+    animation : line2TurnToX .5s forwards;
+}
+.line3{
+    animation: line3TurnToX .5s forwards;
+
+    transform: translateY(-16.5px) rotate(-45deg);
 }
 
 /* **********************************************************************************NAV BAR List***************************************************************** */
@@ -267,6 +298,8 @@ color: #868686;
 
 #videoTitle{
     font-size: 3.8vh;
+    color: #1AD1F9;
+
 }
 
 #videoViews{
@@ -362,9 +395,9 @@ padding: 5%;
     margin: 5%;
 }
 
-.recommendeTitle{
-    color: black;
-    font-size: 2.5vh;
+.recommendedTitle{
+    color: #000000;
+    font-size: 2.2vh;
 }
 
 .recommendedViews, .recommendedUploader{
@@ -384,7 +417,7 @@ padding: 5%;
     }
 
     #navBar{
-        grid-template-columns: 30vw auto 8vw;
+        grid-template-columns: 40vw auto 8vw;
     }
 
     .mobileMenuItem{
