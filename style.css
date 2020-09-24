@@ -16,7 +16,7 @@ body, html{
     "recommendedVideos"
     ;
 
-    grid-template-rows:  10vh auto auto auto auto auto;
+    grid-template-rows:  8vh auto auto auto auto auto;
     /* grid-gap: 3px; */
 }
 
@@ -126,13 +126,31 @@ position: relative;
 #navBarMenuContainer{
     display: none;
     position: absolute;
-    background-color: paleturquoise;
+    background-color: #1AD1F9;
     z-index: 1;
-    height: 90vh;
-    width: 100vw;
+    height: auto;
+    width: 60vw;
 
-    grid-template-rows: repeat(3, 10%) 70%;
-    grid-gap : 3px;
+    grid-template-rows: repeat(3, auto);
+}
+
+.mobileMenuItem{
+    color: white;
+    border-bottom: solid white 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5%;
+    font-size: 2.5vh;
+}
+
+.mobileMenuItem:hover{
+color: #868686;
+}
+
+#firstItem{
+    border-top: solid white 2px;
 }
 
 /* *************************************************************************** VIDEO SECTION ****************************************************************************** */
@@ -227,6 +245,14 @@ position: relative;
     padding: 0;
     margin: 0;
     color: white;
+    margin: 0 1%;
+}
+
+#fullScreenIcon{
+    margin: 0 1%;  
+    height: auto;
+    width: 8vw;
+    cursor: pointer;
 }
 
 /* *************************************************************************** video description ****************************************************************************** */
@@ -307,12 +333,13 @@ position: relative;
     ;
 
     grid-template-columns: 40vw 60vw;
-    grid-template-rows: 12.5%;
+    grid-template-rows: auto;
 
     background-color: white;
     /* border-bottom: solid 2px #1AD1F9; */
     cursor: pointer;
     /* box-shadow: 0 0px 6px grey; */
+    
 }
 
 .thumbnailContainer{
@@ -320,12 +347,14 @@ position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
 .thumbnail{
-height: auto;
+object-fit: contain;
 width: 100%;
 padding: 5%;
+
 }
 
 .recommendedTitleAndViews{
@@ -350,15 +379,20 @@ padding: 5%;
 
 @media only screen and (min-width : 600px) {
     #mainContainer{    
-        grid-template-rows:  15vh 0fr 0fr 0fr auto;
+        grid-template-rows:  15vh auto auto auto auto auto;
+
     }
 
     #navBar{
         grid-template-columns: 30vw auto 8vw;
     }
 
+    .mobileMenuItem{
+        font-size: 5vh;
+    }
+
     #logoTitle{
-        font-size: 3vh;
+        font-size: 4vh;
     }
 
 
@@ -385,19 +419,45 @@ padding: 5%;
 
 
     #uploaderProfilePictureContainer{
-        padding: 0;
+        /* padding: 0; */
     }
 
 
-#uploaderName{
-    color: black;
-    font-size: 6vh;
+    #uploaderName{
+        color: black;
+        font-size: 6vh;
+    }
+
+    #uploaderSubCount{
+        font-size: 3.5vh;
+        color: #868686;
+    }
+
+
+
+
+
+
+
+    .recommendedTitle{
+        color: black;
+        font-size: 6vh;
+    }
+
+    .recommendedViews, .recommendedUploader{
+        font-size: 3.5vh;
+        color: #868686;
+    }
+
+
+    .recommendedVideo{
+        grid-template-rows: auto;
+       
+    }
+
+
 }
 
-#uploaderSubCount{
-    font-size: 3.5vh;
-    color: #868686;
-}
 
 
 
@@ -405,15 +465,6 @@ padding: 5%;
 
 
 
-.recommendedTitle{
-    color: black;
-    font-size: 6vh;
-}
-
-.recommendedViews, .recommendedUploader{
-    font-size: 3.5vh;
-    color: #868686;
-}
-
-
+    .invert{
+        filter: invert(100%);
     }

@@ -5,6 +5,7 @@ var Video = {
     videoDuration : document.getElementById("video").duration,
     playIcon : document.getElementById("playIcon"),
     pauseIcon : document.getElementById("pauseIcon"),
+    fullScreenIcon : document.getElementById("fullScreenIcon"),
     totalViewPortWidth : function(){return document.getElementById("body").getBoundingClientRect().width},
     timeLinePositionX : function(){return document.getElementById("timeLine").getBoundingClientRect().x},
     timeLineWidth : function(){return document.getElementById("timeLine").getBoundingClientRect().width},
@@ -18,6 +19,10 @@ var Video = {
         Video.pauseIcon.addEventListener("click", function(){
             Video.pauseVideo();
         });
+        this.fullScreenIcon.addEventListener("click", function(){
+            Video.fullScreen(Video.source);
+        });
+
     },
 
     playVideo : function(){
@@ -30,6 +35,21 @@ var Video = {
         this.source.pause();
         this.pauseIcon.style.display = "none";
         this.playIcon.style.display = "block";
+    },
+
+    fullScreen : function(element){
+        if(element.requestFullscreen){
+            element.requestFullscreen();
+        } 
+        else if (element.webkitRequestFullscreen){
+            element.webkitRequestFullscreen();
+        }
+        else if (element.mozRequestFullScreen){
+            element.mozRequestFullScreen();
+        }
+        else if (element.msRequestFullscreen){
+            element.msRequestFullscreen();
+        }   
     },
 
     setTimeLineWidthOnClick : function(){
@@ -90,6 +110,10 @@ Video.timeProgress();
 };
 
 
+
+
+
+
 let ProfilePictureSetter ={
     profileContainerHeight : document.getElementById("uploader").clientHeight,
     profileContainer : document.getElementById("uploader"),
@@ -132,10 +156,13 @@ var NavBar = {
     hamburger : document.getElementById("itemHamburgerContainer"), 
     menu : document.getElementById("navBarMenuContainer"),
 
+
+
+
     listenHamburgerIsClicked : function(){
         this.hamburger.addEventListener("click", function(){
             if(NavBar.menu.clientHeight == 0){
-                NavBar.showMenu()
+                NavBar.showMenu();
             }else{
                 NavBar.hideMenu()
             }
@@ -146,10 +173,10 @@ var NavBar = {
         this.menu.style.display = "grid"
         this.menu.animate(
             [
-                { height : "0vh", opacity: "0"},
-                {height : "90vh", opacity: "1"},
+                { right: "-60vw", height : "auto", opacity: "0"},
+                {right: "0vh", height : "auto", opacity: "1"},
             ], {
-                duration: 700,
+                duration: 500,
                 fill: "forwards"
             });
 
@@ -158,14 +185,16 @@ var NavBar = {
     hideMenu : function(){
         this.menu.animate(
             [
-                {height : "90vh", opacity: "1"},
-                {height : "0vh", opacity: "0", display: "none"}
+                { height : "auto", opacity: "1"},
+                {right: "-60vw", height : "0vh", opacity: "0", display: "none"}
                 
             ], {
-                duration: 700,
+                duration: 500,
                 fill: "forwards"
             });
     },
+
+
 };
 
 NavBar.listenHamburgerIsClicked();
