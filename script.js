@@ -281,3 +281,22 @@ append: function (){
 };
 
 RecommendedVid.append();
+
+
+var Post = {
+    button : document.getElementById("postCommentButton"),
+    textArea : document.getElementById("textareaComment"),
+
+    createListeners : function(){
+        Post.button.addEventListener("click", function(){
+            Post.post();
+        });
+    },
+
+    post : function(){
+        let textAreaText = this.textArea.value;
+        alert(textAreaText);
+    }
+}
+
+Post.createListeners();
