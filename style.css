@@ -356,13 +356,13 @@ color: #868686;
     color: #868686;
 }
 
-/* *************************************************************************** comments ****************************************************************************** */
+/* *************************************************************************** user comments ****************************************************************************** */
 
 
 
 
 #userCommentsContainer{
-    height: 15vh;
+    min-height: 15vh;
     width: 100vw;
     background-color: white;
     display: grid;
@@ -448,8 +448,48 @@ height: 2vh;
 #textareaComment{
     grid-area: textareaComment;
     resize: none;
+    font-size: 1.8vh;
+    color: #868686;
 }
 
+/* *************************************************************************** other comments ****************************************************************************** */
+
+.otherCommentsContainer{
+    min-height: 15vh;
+    width: 100vw;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+    "otherCommentProfilePic otherUsernameAndComment"
+    ;
+    padding: 2%;
+    border: solid black 1px;
+}
+
+.otherCommentProfilePic{
+    grid-area: otherCommentProfilePic;
+    border-radius: 50%;
+    
+    object-fit: cover;
+    width: 45px;
+    height: 45px;
+}
+
+.otherUsername{
+    color: black;
+    font-size: 2.2vh;
+}
+
+.otherCommentsText{
+    font-size: 1.8vh;
+    color: #868686;
+}
+
+.otherUsernameAndComment{
+    grid-area: otherUsernameAndComment;
+}
 /* *************************************************************************** recommended videos ****************************************************************************** */
 
 .recommendedVideo{
@@ -567,6 +607,15 @@ padding: 5%;
     }
 
 
+
+
+
+    #userCommentsContainer{
+        height: 40vh;
+    }
+    #postCommentButton{
+        font-size: 3.5vh;
+    }
 
 
 

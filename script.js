@@ -258,7 +258,7 @@ append: function (){
         
         let element = document.createElement(type);
         element.setAttribute("class", classAttribute);
-        console.log(element);
+        // console.log(element);
             if(type == "img"){
                 element.src = source;
             }
@@ -270,7 +270,7 @@ append: function (){
         let text = document.createTextNode(textContent);
         let element = document.createElement(type);
         element.setAttribute("class", classAttribute);
-        console.log(element);
+        // console.log(element);
            element.appendChild(text);
 
             return element;
@@ -284,19 +284,63 @@ RecommendedVid.append();
 
 
 var Post = {
+    mainContainer : document.getElementById("commentSectionContainer"),
     button : document.getElementById("postCommentButton"),
+    buttonIsClicked : false,
     textArea : document.getElementById("textareaComment"),
+    textAreaText : "",
+    profilePicture : document.getElementById("userCommentProfilePic").src,
+    userName : "Tommy Audet",
+
 
     createListeners : function(){
         Post.button.addEventListener("click", function(){
-            Post.post();
+            Post.getTextAreaValue();
+            Post.setAndMakeElements();
         });
     },
 
-    post : function(){
-        let textAreaText = this.textArea.value;
-        alert(textAreaText);
-    }
-}
+    getTextAreaValue : function(){
+        this.textAreaText = this.textArea.value;
+    },
+
+    setAndMakeElements : function(){
+        console.log(this.profilePicture);
+        let otherCommentsContainer = makeElements("div", "otherCommentsContainer");
+        let otherUsernameAndComment = makeElements("div", "otherUsernameAndComment");
+        let otherCommentProfilePic = makeElements("img","otherCommentProfilePic" , this.profilePicture);
+
+        let otherUsername = makeElements("p", "otherUsername", "", this.userName);
+        let otherCommentsText = makeElements("p", "otherCommentsText", "", this.textAreaText);
+
+
+        this.mainContainer.insertBefore(otherCommentsContainer, this.mainContainer.childNodes[2]);
+        otherCommentsContainer.appendChild(otherCommentProfilePic);
+        otherCommentsContainer.appendChild(otherUsernameAndComment);
+        otherUsernameAndComment.appendChild(otherUsername);
+        otherUsernameAndComment.appendChild(otherCommentsText);
+
+
+        function makeElements(type, classAttribute, source, textContent){
+            let element = document.createElement(type);
+            element.setAttribute("class", classAttribute);
+            console.log(element);
+                if(type == "img"){
+                    element.src = source;
+                }
+                if(type == "p"){
+                    let textNode = document.createTextNode(textContent);
+                    element.appendChild(textNode);
+                }
+    
+                return element;
+        }
+
+        
+
+         
+        
+    },
+};
 
 Post.createListeners();
