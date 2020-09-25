@@ -114,28 +114,28 @@ Video.timeProgress();
 
 
 
-let ProfilePictureSetter ={
-    profileContainerHeight : document.getElementById("uploader").clientHeight,
-    profileContainer : document.getElementById("uploader"),
-    profilePicture : document.getElementById("uploaderProfilePicture"),
+// let ProfilePictureSetter ={
+//     profileContainerHeight : document.getElementById("uploader").clientHeight,
+//     profileContainer : document.getElementById("uploader"),
+//     profilePicture : document.getElementById("uploaderProfilePicture"),
 
-    set : function(){
-        this.profilePicture.style.display = "block";
+//     set : function(){
+//         this.profilePicture.style.display = "block";
 
-        this.profilePicture.style.height = this.profileContainerHeight + "px";
-        this.profilePicture.style.width = this.profileContainerHeight + "px";
-    },
+//         this.profilePicture.style.height = this.profileContainerHeight + "px";
+//         this.profilePicture.style.width = this.profileContainerHeight + "px";
+//     },
 
-    resize : function(){
-        window.onresize = function(){
-            ProfilePictureSetter.set();
-            console.log("resized");
-        }
-    }
-}
+//     resize : function(){
+//         window.onresize = function(){
+//             ProfilePictureSetter.set();
+//             console.log("resized");
+//         }
+//     }
+// }
 
-ProfilePictureSetter.set();
-ProfilePictureSetter.resize();
+// ProfilePictureSetter.set();
+// ProfilePictureSetter.resize();
 
 // let profileContainerHeight = document.getElementById("uploader").clientHeight;
 // console.log(profileContainerHeight + " container height");
@@ -222,10 +222,10 @@ NavBar.listenHamburgerIsClicked();
 
 
 var RecommendedVid = {
-image: ["image/thumbnail/thumbnail1.jpg", "image/thumbnail/thumbnail6.jpg", "image/thumbnail/thumbnail5.jpg"],
-title: ["Ca vous empêche de jouer", "Ca vous empêche de jouer", "Ca vous empêche de jouer"],
-uploader: ["Tommy Audet"],
-views: ["1 Vues"],
+image: ["image/thumbnail/thumbnail1.jpg", "image/thumbnail/thumbnail2.jpg", "image/thumbnail/thumbnail3.jpg", "image/thumbnail/thumbnail4.jpg", "image/thumbnail/thumbnail5.jpg", "image/thumbnail/thumbnail6.jpg"],
+title: ["Ca vous empêche de jouer", "Comment devenir un gamer", "Achetez nos manettes ps5 !", "Fini les microtransactions ?", "Il est où Mario Galaxy 2", "Ma Game en direct"],
+uploader: ["Tommy Audet", "Tommy Audet", "Tommy Audet", "Tommy Audet", "Tommy Audet", "Tommy Audet"],
+views: ["100 Vues", "200 Vues", "100 000 Vues", "100 Vues", "200 Vues", "100 000 Vues"],
 
 append: function (){
 
@@ -237,6 +237,8 @@ append: function (){
 
         let recommendedTitleAndViews = makeElements("div", "recommendedTitleAndViews");
         let recommendedTitle = makeTextElements("p", "recommendedTitle", RecommendedVid.title[i]);
+        let recommendedUploader = makeTextElements("p", "recommendedUploader", RecommendedVid.uploader[i]);
+        let recommendedViews = makeTextElements("p", "recommendedViews", RecommendedVid.views[i]);
 
 
         
@@ -247,6 +249,8 @@ append: function (){
 
         recommendedVideo.appendChild(recommendedTitleAndViews);
         recommendedTitleAndViews.appendChild(recommendedTitle);
+        recommendedTitle.appendChild(recommendedUploader);
+        recommendedUploader.appendChild(recommendedViews);
 
     }
 

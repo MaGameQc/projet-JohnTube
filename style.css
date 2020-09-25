@@ -17,7 +17,7 @@ body, html{
     "recommendedVideos"
     ;
 
-    grid-template-rows:  8vh auto auto auto auto auto;
+    grid-template-rows:  8vh auto auto auto auto auto auto;
     /* grid-gap: 3px; */
 }
 
@@ -328,8 +328,10 @@ color: #868686;
 #uploaderProfilePicture{
     
     border-radius: 50%;
-    display: none;
+    /* display: none; */
     object-fit: cover;
+    width: 60px;
+    height: 60px;
 }
 
 #uploader{
@@ -354,6 +356,43 @@ color: #868686;
     color: #868686;
 }
 
+/* *************************************************************************** comments ****************************************************************************** */
+
+#commentsContainer{
+    align-self: flex-end;
+    margin: 0 auto;
+    height: auto;
+    width: 50vw;
+    color: white;
+    background-color: #1AD1F9;
+    border-radius: 12px;
+}
+
+#commentsButton{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+#commentsButtonText{
+    display:inline-block;
+    font-size: 1.5vh;
+}
+
+#commentsButtonArrow{
+filter: invert(100%);
+height: 2vh;
+}
+
+#userCommentsContainer{
+    height: 15vh;
+    width: 100vw;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto auto;
+}
 
 /* *************************************************************************** recommended videos ****************************************************************************** */
 
@@ -398,6 +437,11 @@ padding: 5%;
 .recommendedTitle{
     color: #000000;
     font-size: 2.2vh;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
 }
 
 .recommendedViews, .recommendedUploader{
