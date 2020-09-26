@@ -56,11 +56,11 @@
 
 
 
-        <section id="videoContainer" class="color">
-            <video id="video"  src="vid.mp4" autoplay loop muted preload="metadata"></video>
+        <section id="videoContainer" class="">
+            <div id="overlayPadder">
             <div id="videoOverlay">
                 <div id="settingsDiv">
-                        <img src="image/settings.png" alt="">
+                        <!-- <img src="image/settings.png" alt=""> -->
                 </div>
 
                 <div id="controlDiv">
@@ -82,6 +82,8 @@
                         </div>
                 </div>
             </div>
+        </div>
+            <video id="video"  src="vid.mp4" autoplay loop muted preload="metadata"></video>
         </section>
 
         <section id="videoDescriptionContainer">
@@ -101,13 +103,10 @@
                 </div>
         </section>
 
-        <section id="commentSectionContainer" class="color">
-                a
+        <section id="commentSectionContainer" class="">
                 <div id="userCommentsContainer">
                         <img id="userCommentProfilePic" src="image/profile.png" alt="">
-                        <textarea id="textareaComment" rows="2">
-
-                        </textarea>
+                        <textarea id="textareaComment" ></textarea>
                         <div id="postCommentContainer">
                                 <div id="postCommentButton">
                                         <p>Post</p>
@@ -139,7 +138,7 @@
                 </div>
         </section>
 
-        <section id="recommendedVideosContainer" class="color">
+        <section id="recommendedVideosContainer" class="">
                 <!-- <article class="recommendedVideo">
                         <div class="thumbnailContainer">
                                 <img class="thumbnail" src="image/thumbnail/thumbnail1.jpg" alt="">

@@ -55,6 +55,7 @@ body, html{
 
 #commentSectionContainer{
     grid-area: commentSection;
+    padding: 2% 0 ;
 }
 
 #recommendedVideosContainer{
@@ -68,7 +69,7 @@ body, html{
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
     "logo empty hamburger"
     ;
     grid-template-columns: 40vw auto 15vw;
@@ -111,8 +112,8 @@ position: relative;
     width: 30px;
     height: 30px;
     display:flex;
-    justify-content: space-between;   
-    flex-direction: column; 
+    justify-content: space-between;
+    flex-direction: column;
     cursor: pointer;
 }
 
@@ -190,28 +191,20 @@ color: #868686;
     position: relative;
 }
 
+
+
 #videoOverlay{
-    display:none;
+    display:flex;
     position: absolute;
-    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 133, 20, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: space-between;
     flex-direction: column;
     opacity: 0;
 }
 
 #videoContainer:hover #videoOverlay{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    display: flex;
-
     animation: showVideoOverlay 0.5s linear forwards;
 }
 
@@ -234,10 +227,7 @@ color: #868686;
     filter: invert(100%);
 }
 
-#controlDiv img{
-    height: 100%;
-    width: auto;
-}
+
 
 #playIcon{
     cursor: pointer;
@@ -254,7 +244,7 @@ color: #868686;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
+
 }
 
 #timeLine{
@@ -280,7 +270,7 @@ color: #868686;
 }
 
 #fullScreenIcon{
-    margin: 0 1%;  
+    margin: 0 1%;
     height: auto;
     width: 8vw;
     cursor: pointer;
@@ -326,7 +316,7 @@ color: #868686;
 }
 
 #uploaderProfilePicture{
-    
+
     border-radius: 50%;
     /* display: none; */
     object-fit: cover;
@@ -338,7 +328,7 @@ color: #868686;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
+
 }
 
 #uploader, p{
@@ -363,12 +353,12 @@ color: #868686;
 
 #userCommentsContainer{
     min-height: 15vh;
-    width: 100vw;
+    width: 100%;
     background-color: white;
-    display: grid;
+    display: none;
     grid-template-columns: 20% 80%;
     grid-template-rows: auto auto;
-    grid-template-areas: 
+    grid-template-areas:
     "userCommentsProfilePic textareaComment"
     "postCommentContainer postCommentContainer"
     ;
@@ -378,7 +368,7 @@ color: #868686;
 #userCommentProfilePic{
     grid-area: userCommentsProfilePic;
     border-radius: 50%;
-    
+
     object-fit: cover;
     width: 45px;
     height: 45px;
@@ -398,7 +388,7 @@ color: #868686;
     align-self: flex-end;
     width: 30%;
     height: 100%;
-    color: white;    
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -445,6 +435,25 @@ filter: invert(100%);
 height: 2vh;
 }
 
+@keyframes arrowGoDown{
+    from{transform: rotate(0deg)}
+    to{transform: rotate(180deg)}
+}
+
+@keyframes arrowGoUp{
+    from{transform: rotate(-180deg)}
+    to{transform: rotate(0deg)}
+}
+
+.arrowDown{
+    animation: arrowGoDown 1s forwards;
+}
+
+.arrowUp{
+    animation: arrowGoUp 1s forwards;
+}
+
+
 #textareaComment{
     grid-area: textareaComment;
     resize: none;
@@ -456,22 +465,21 @@ height: 2vh;
 
 .otherCommentsContainer{
     min-height: 15vh;
-    width: 100vw;
+    width: 100%;
     background-color: white;
     display: grid;
     grid-template-columns: 20% 80%;
     grid-template-rows: auto auto;
-    grid-template-areas: 
+    grid-template-areas:
     "otherCommentProfilePic otherUsernameAndComment"
     ;
     padding: 2%;
-    border: solid black 1px;
 }
 
 .otherCommentProfilePic{
     grid-area: otherCommentProfilePic;
     border-radius: 50%;
-    
+
     object-fit: cover;
     width: 45px;
     height: 45px;
@@ -495,7 +503,7 @@ height: 2vh;
 .recommendedVideo{
     display: grid;
 
-    grid-template-areas: 
+    grid-template-areas:
     "thumbnail"
     "TitleAndViews"
     ;
@@ -507,7 +515,7 @@ height: 2vh;
     /* border-bottom: solid 2px #1AD1F9; */
     cursor: pointer;
     /* box-shadow: 0 0px 6px grey; */
-    
+
 }
 
 .thumbnailContainer{
@@ -515,7 +523,7 @@ height: 2vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 .thumbnail{
@@ -551,7 +559,7 @@ padding: 5%;
 
 
 @media only screen and (min-width : 600px) {
-    #mainContainer{    
+    #mainContainer{
         grid-template-rows:  15vh auto auto auto auto auto;
 
     }
@@ -572,11 +580,11 @@ padding: 5%;
 
 
 
-    
+
     #videoTitle{
         font-size: 10vh;
     }
-    
+
     #videoViews{
         font-size: 4.8vh;
         color: #868686;
@@ -584,7 +592,7 @@ padding: 5%;
 
 
 
-    
+
 
     #uploaderContainer{
         grid-template-columns: 10% 80%;
@@ -634,9 +642,227 @@ padding: 5%;
 
     .recommendedVideo{
         grid-template-rows: auto;
-       
+
     }
 
+#commentsButtonText{
+    font-size: 5vh;
+}
+
+#commentsButtonArrow{
+    height: 5vh;
+    }
+
+    #userCommentsContainer{
+        min-height: 30vh;
+    }
+
+    #userCommentProfilePic{
+        width: 60px;
+        height: 60px;
+    }
+
+    #postCommentButton{
+        font-size: 4vh;
+    }
+
+    #textareaComment{
+        font-size: 4vh;
+        }
+
+    .otherCommentsContainer{
+        min-height: 30vh;
+    }
+
+    .otherCommentProfilePic{
+        width: 60px;
+        height: 60px;
+    }
+
+    .otherUsername{
+        color: black;
+        font-size: 4vh;
+    }
+
+    .otherCommentsText{
+        font-size: 4vh;
+    }
+
+}
+
+
+@media only screen and (min-width : 992px) {
+
+    #mainContainer{
+        display: grid;
+        width: 100%;
+        height: 100%;
+
+        grid-template-areas:
+        "navbar navbar"
+        "video recommendedVideos"
+        "videoInformation recommendedVideos"
+        "uploader recommendedVideos"
+        "commentSection recommendedVideos"
+        ;
+
+        grid-template-rows:  9vh 1fr auto auto auto auto auto;
+        grid-template-columns: 65vw 35vw;
+
+    }
+
+    #navBarContainer{
+        margin-bottom: 3vh;
+    }
+
+    .recommendedVideo{
+        grid-template-columns: 40% 60%;
+        grid-template-rows: auto;
+    }
+
+    .recommendedTitle{
+        font-size: 2.8vh;
+    }
+
+    .recommendedViews, .recommendedUploader{
+        font-size: 1.8vh;
+        color: #868686;
+    }
+
+    #videoContainer{
+        padding: 2%;
+        position:relative;
+    }
+
+    #video{
+        width: 100%;
+
+        }
+
+        #overlayPadder{
+            position:absolute;
+            width: 100%;
+            height: 100%;
+            padding: 2%;
+            z-index: -3;
+        }
+
+        #videoOverlay{
+            padding:2%;
+            position: relative;
+            z-index: 3;
+        }
+
+    #controlDiv img{
+        height: 50%;
+        width: auto;
+
+    }
+
+    #fullScreenIcon{
+        height: auto;
+        width: 3vw;
+    }
+
+    #videoTitle{
+        font-size: 4vh;
+        color: #1AD1F9;
+
+    }
+
+    #videoViews{
+        font-size: 2vh;
+        color: #868686;
+    }
+
+    #time{
+        font-size: 2vh;
+    }
+
+    #uploaderProfilePicture{
+        width: 160px;
+        height: 160px;
+    }
+
+    #uploaderName{
+        font-size: 2.5vh;
+    }
+
+    #uploaderSubCount{
+        font-size: 1.8vh;
+        color: #868686;
+    }
+
+
+
+
+
+#videoInformationContainer{
+    grid-area: videoInformation;
+}
+
+#uploaderContainer{
+    grid-area: uploader;
+}
+
+#commentSectionContainer{
+    grid-area: commentSection;
+    padding: 2% 0 ;
+}
+
+#recommendedVideosContainer{
+    grid-area: recommendedVideos;
+}
+
+#userCommentsContainer{
+    grid-template-columns: 10% 90%;
+    display: grid;
+    min-height: 20vh;
+}
+
+#userCommentProfilePic{
+    width: 160px;
+    height: 160px;
+}
+
+#postCommentButton{
+    align-self: flex-start;
+    width: 20%;
+    height: 40%;
+    font-size: 2.5vh;
+}
+
+#textareaComment{
+    font-size: 1.8vh;
+}
+
+.otherCommentsContainer{
+    grid-template-columns: 10% 90%;
+    min-height: 20vh;
+}
+
+.otherCommentProfilePic{
+    width: 160px;
+    height: 160px;
+}
+
+.otherUsername{
+    color: black;
+    font-size: 2.4vh;
+}
+
+.otherCommentsText{
+    font-size: 1.8vh;
+    color: #868686;
+}
+
+
+
+
+
+#commentsContainer{
+    display: none;
+}
 
 }
 

@@ -22,6 +22,9 @@ var Video = {
         this.fullScreenIcon.addEventListener("click", function(){
             Video.fullScreen(Video.source);
         });
+        this.timeLine.addEventListener("click", function(){
+            Video.setTimeLineWidthOnClick();
+        });
 
     },
 
@@ -53,6 +56,7 @@ var Video = {
     },
 
     setTimeLineWidthOnClick : function(){
+        
             Video.timeLine.addEventListener("click", function(mouse){
                 var mousePositionX = mouse.pageX;
                 let timeLinePositionX = Video.timeLinePositionX();
@@ -62,13 +66,14 @@ var Video = {
                 document.getElementById("timeLineState").style.width = calc + "%";
                 var toSeconds = calc * Video.videoDuration / 100 ;
 
-                console.log(toSeconds);
+                console.log(Video.source.currentTime);
                 Video.source.currentTime = toSeconds;
 
             });
     },
 
     timeLineProgress : function(){
+        
         let calculateTimeLineWidth = (Video.source.currentTime / Video.videoDuration) * 100;
         document.getElementById("timeLineState").style.width = calculateTimeLineWidth + "%";
     },
@@ -84,31 +89,43 @@ var Video = {
         }
     },
 
+    whenTimeUpdates : function(){
+        Video.source.ontimeupdate = function(){
+            if(isNaN(Video.videoDuration)){
+                Video.videoDuration = document.getElementById("video").duration;
+            } else{
+                Video.timeLineProgress();
+                Video.timeProgress();
+            }
+            };
+    },
 
+    showValues : function(){
+        console.log(this.source.currentTime + "     currentTime");
+    
+        console.log(this.videoDuration + "     Duration");
+    }
 
 };
 
-Video.setTimeLineWidthOnClick();
-// document.getElementById("body").addEventListener("click", function(){
-//     console.log(Video.timeLinePositionX());
-
-// });
-
-Video.timeLine.addEventListener("click", function(){
-    Video.setTimeLineWidthOnClick();
-});
-
+    
 Video.createListeners();
+Video.whenTimeUpdates();
+
 Video.setTimeLineWidthOnClick();
 
+Video.showValues();
 
-Video.source.ontimeupdate = function(){
 
-Video.timeLineProgress();
-Video.timeProgress();
 
-};
 
+
+
+// Video.source.onloadeddata = function(){
+
+
+
+// }
 
 
 
@@ -292,17 +309,19 @@ var Post = {
     profilePicture : document.getElementById("userCommentProfilePic").src,
     userName : "Tommy Audet",
 
+    getTextAreaValue : function(){
+        this.textAreaText = this.textArea.value;
+        this.textArea.value = "";
+    },
 
     createListeners : function(){
         Post.button.addEventListener("click", function(){
             Post.getTextAreaValue();
-            Post.setAndMakeElements();
+                Post.setAndMakeElements();
         });
     },
 
-    getTextAreaValue : function(){
-        this.textAreaText = this.textArea.value;
-    },
+
 
     setAndMakeElements : function(){
         console.log(this.profilePicture);
@@ -344,3 +363,43 @@ var Post = {
 };
 
 Post.createListeners();
+
+var ShowComments = {
+    button : document.getElementById("commentsButton"),
+    buttonArrow : document.getElementById("commentsButtonArrow"),
+    buttonIsClicked : false,
+    userCommentsContainer : document.getElementById("userCommentsContainer"),
+    otherCommentsContainer : document.querySelectorAll(".otherCommentsContainer")[0],
+
+    createListenners : function(){
+        
+        this.button.addEventListener("click", function(){
+            if(ShowComments.buttonIsClicked == false){
+                ShowComments.show();
+                ShowComments.buttonIsClicked = true;
+                ShowComments.buttonArrow.classList.remove("arrowUp");
+                ShowComments.buttonArrow.classList.add("arrowDown");
+            } else{
+                ShowComments.hide();
+                ShowComments.buttonIsClicked = false;
+                ShowComments.buttonArrow.classList.remove("arrowDown");
+                ShowComments.buttonArrow.classList.add("arrowUp");
+            }
+        });
+    },
+
+    show : function(){
+        this.userCommentsContainer.style.display = "grid";
+        this.otherCommentsContainer.style.display = "grid";
+        this.userCommentsContainer.classList.add("slideDown");
+        this.otherCommentsContainer.classList.add("slideDown");
+
+        },
+    
+    hide : function(){
+        this.userCommentsContainer.style.display = "none";
+        this.otherCommentsContainer.style.display = "none";
+    }
+} 
+
+ShowComments.createListenners();
