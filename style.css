@@ -191,6 +191,12 @@ color: #868686;
     position: relative;
 }
 
+#overlayPadder{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
 
 
 #videoOverlay{
@@ -493,6 +499,7 @@ height: 2vh;
 .otherCommentsText{
     font-size: 1.8vh;
     color: #868686;
+    word-wrap: break-word;
 }
 
 .otherUsernameAndComment{
@@ -732,6 +739,8 @@ padding: 5%;
     #videoContainer{
         padding: 2%;
         position:relative;
+        grid-area: video;
+
     }
 
     #video{
@@ -739,18 +748,22 @@ padding: 5%;
 
         }
 
-        #overlayPadder{
-            position:absolute;
-            width: 100%;
-            height: 100%;
-            padding: 2%;
-            z-index: -3;
-        }
+
 
         #videoOverlay{
             padding:2%;
             position: relative;
             z-index: 3;
+        }
+
+        #overlayPadder{
+            position:absolute;
+            min-width: 100%;
+            min-height: 100%;
+            padding: 2%;
+            z-index: 3;
+
+            
         }
 
     #controlDiv img{
