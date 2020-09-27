@@ -180,6 +180,7 @@ var NavBar = {
 
 
     listenHamburgerIsClicked : function(){
+        if(this.hamburger.style.display != "none"){
         this.hamburger.addEventListener("click", function(){
             if(NavBar.menu.clientHeight == 0){
                 NavBar.showMenu();
@@ -189,6 +190,7 @@ var NavBar = {
                 NavBar.hideMenu();
             }
         });
+    }
     },
 
     showMenu : function(){
