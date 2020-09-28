@@ -6,6 +6,8 @@ var Video = {
     playIcon : document.getElementById("playIcon"),
     pauseIcon : document.getElementById("pauseIcon"),
     fullScreenIcon : document.getElementById("fullScreenIcon"),
+    volumeOnIcon : document.getElementById("volumeOn"),
+    volumeOffIcon : document.getElementById("volumeOff"),
     totalViewPortWidth : function(){return document.getElementById("body").getBoundingClientRect().width},
     timeLinePositionX : function(){return document.getElementById("timeLine").getBoundingClientRect().x},
     timeLineWidth : function(){return document.getElementById("timeLine").getBoundingClientRect().width},
@@ -18,6 +20,12 @@ var Video = {
         });
         Video.pauseIcon.addEventListener("click", function(){
             Video.pauseVideo();
+        });
+        this.volumeOnIcon.addEventListener("click", function(){
+            Video.turnVolumeOff();
+        });
+        this.volumeOffIcon.addEventListener("click", function(){
+            Video.turnVolumeOn();
         });
         this.fullScreenIcon.addEventListener("click", function(){
             Video.fullScreen(Video.source);
@@ -53,6 +61,18 @@ var Video = {
         else if (element.msRequestFullscreen){
             element.msRequestFullscreen();
         }   
+    },
+
+    turnVolumeOff : function(){
+        this.volumeOnIcon.style.display = "none";
+        this.volumeOffIcon.style.display = "block";
+        this.source.muted = true;
+    },
+
+    turnVolumeOn : function(){
+        this.volumeOnIcon.style.display = "block";
+        this.volumeOffIcon.style.display = "none";
+        this.source.muted = false;
     },
 
     setTimeLineWidthOnClick : function(){
@@ -175,8 +195,30 @@ var NavBar = {
     line1 : document.getElementById("line1"),
     line2 : document.getElementById("line1"),
     line3 : document.getElementById("line1"),
+    gitHubPc : document.getElementById("gitHubPc"),
+    portfolioPc : document.getElementById("portfolioPc"),
+    gitHubMobile : document.getElementsByClassName("gitHubMobile")[0],
+    portfolioMobile : document.getElementsByClassName("portfolioMobile")[0],
 
+    createListenners : function(){
+        this.gitHubPc.addEventListener("click", function(){
+            NavBar.redirect("https://github.com/MaGameQc/projet-JohnTube");
+        });
+        this.portfolioPc.addEventListener("click", function(){
+            NavBar.redirect("https://magame.ca/portfolio%202021/");
+        });
 
+        this.gitHubMobile.addEventListener("click", function(){
+            NavBar.redirect("https://github.com/MaGameQc/projet-JohnTube");
+        });
+        this.portfolioMobile.addEventListener("click", function(){
+            NavBar.redirect("https://magame.ca/portfolio%202021/");
+        });
+    },
+
+    redirect : function(url){
+        window.location.href = url;
+    },
 
 
     listenHamburgerIsClicked : function(){
@@ -235,7 +277,7 @@ var NavBar = {
 };
 
 NavBar.listenHamburgerIsClicked();
-
+NavBar.createListenners();
 
 
 

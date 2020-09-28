@@ -286,6 +286,18 @@ color: #868686;
     cursor: pointer;
 }
 
+#volumeOn{
+    filter: invert(100%);
+    display: none;
+    cursor: pointer;
+}
+
+#volumeOff{
+    filter: invert(100%);
+    cursor: pointer;
+}
+
+
 /* *************************************************************************** video description ****************************************************************************** */
 #videoDescription{
     height: 100%;
@@ -528,6 +540,11 @@ height: 2vh;
     cursor: pointer;
     /* box-shadow: 0 0px 6px grey; */
 
+}
+
+.recommendedVideo:hover{
+    border-left: solid #1AD1F9 6px;
+    margin-left: -6px;
 }
 
 .thumbnailContainer{
